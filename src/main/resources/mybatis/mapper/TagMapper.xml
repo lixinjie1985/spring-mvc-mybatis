@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.eop.spring.mvc.mybatis.mapper.TagMapper">
+
+	<insert id="insertTag" parameterType="Tag" useGeneratedKeys="true" keyColumn="id" keyProperty="id" statementType="PREPARED">
+		insert into tag (name,crt_time,blog_id)
+		values(#{name},#{createTime},#{blogId})
+	</insert>
+  	
+  	<update id="updateTag" parameterType="Tag">
+  		update tag
+  		<set>
+  			<if test="name != null and name != ''">name = #{name},</if>
+  		</set>
+  		where id = #{id}
+  	</update>
+  	
+  	<delete id="deleteTag" parameterType="long">
+  		delete from tag where id = #{id}
+  	</delete>
+  	
+  	<select id="selectTag" parameterType="long" resultType="Tag">
+  		select id,name,crt_time createTime,blog_id blogId from tag where id = #{id}
+  	</select>
+  	
+  	<select id="selectTags" resultType="Tag">
+  		select id,name,crt_time createTime,blog_id blogId from tag
+  	</select>
+  	
+  	<select id="selectTagsByBlog" parameterType="long" resultType="Tag">
+  		select id,name,crt_time createTime,blog_id blogId from tag where blog_id = #{blogId}
+  	</select>
+  	
+  	<select id="selectTagsByPost" parameterType="long" resultType="Tag">
+  		select t.id,t.name,t.crt_time createTime,t.blog_id blogId 
+  		from tag t inner join post_tag pt on t.id = pt.tag_id 
+  		where pt.post_id = #{postId}
+  	</select>
+</mapper>
