@@ -12,13 +12,13 @@ public interface BlogService {
 
 	Long saveBlog(Blog blog);
 	
-	Blog getBlog(Long id);
-	
-	Blog getBlogByUser(Long userId);
-	
 	Long updateBlog(Blog blog);
 	
 	Long removeBlog(Long id);
+	
+	Blog getBlog(Long id);
+	
+	Blog getBlogByUser(Long userId);
 	
 	List<Blog> listAllBlogs();
 }

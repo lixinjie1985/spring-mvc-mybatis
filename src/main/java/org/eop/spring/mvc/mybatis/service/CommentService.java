@@ -12,11 +12,11 @@ public interface CommentService {
 
 	Long saveComment(Comment comment);
 	
-	Comment getComment(Long id);
-	
 	Long updateComment(Comment comment);
 	
 	Long removeComment(Long id);
+	
+	Comment getComment(Long id);
 	
 	List<Comment> listAllComments();
 	

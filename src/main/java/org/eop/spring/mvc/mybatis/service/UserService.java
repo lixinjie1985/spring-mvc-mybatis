@@ -12,15 +12,15 @@ public interface UserService {
 
 	Long saveUser(User user);
 	
-	User getUser(Long id);
-	
-	User getUserByLogin(String userName, String password);
-	
 	Long updateUser(User user);
 	
 	Long updateUserStatus(Long id, Integer status);
 	
 	Long removeUser(Long id);
+	
+	User getUser(Long id);
+	
+	User getUserByLogin(String userName, String password);
 	
 	List<User> listAllUsers();
 	

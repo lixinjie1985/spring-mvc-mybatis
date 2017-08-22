@@ -12,11 +12,11 @@ public interface TagService {
 
 	Long saveTag(Tag tag);
 	
-	Tag getTag(Long id);
-	
 	Long updateTag(Tag tag);
 	
 	Long removeTag(Long id);
+	
+	Tag getTag(Long id);
 	
 	List<Tag> listAllTags();
 	

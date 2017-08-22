@@ -12,11 +12,11 @@ public interface PostService {
 
 	Long savePost(Post post);
 	
-	Post getPost(Long id);
-	
 	Long updatePost(Post post);
 	
 	Long removePost(Long id);
+	
+	Post getPost(Long id);
 	
 	List<Post> listAllPosts();
 	
