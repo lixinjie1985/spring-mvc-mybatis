@@ -30,17 +30,17 @@ public class HomeController {
 	public String home(Model model) {
 		//返回所有文章，所有标签
 		List<Map<String, Object>> postVOs = postService.listPostVOsForHome();
-		
+		model.addAttribute("postVOs", postVOs);
 		List<Map<String, Object>> tagVOs = tagService.listTagVOsForHome();
-		
-		
-		return "";
+		model.addAttribute("tagVOs", tagVOs);
+		return "home/home";
 	}
 	
 	@GetMapping("/t/{name}")
-	public String tag(@PathVariable("name") String name) {
+	public String tag(@PathVariable("name") String name, Model model) {
 		List<Map<String, Object>> postVOs = postService.listPostVOsByTagNameForHome(name);
-		
-		return "";
+		model.addAttribute("postVOs", postVOs);
+		model.addAttribute("name", name);
+		return "home/tag";
 	}
 }

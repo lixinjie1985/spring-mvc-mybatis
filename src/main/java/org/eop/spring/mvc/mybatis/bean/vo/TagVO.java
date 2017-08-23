@@ -6,7 +6,6 @@ package org.eop.spring.mvc.mybatis.bean.vo;
  */
 public class TagVO {
 
-	private Long id;
 	private String name;
 	private Long postCount;
 }

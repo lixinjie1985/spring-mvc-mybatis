@@ -38,4 +38,11 @@
   		from tb_tag t inner join tb_post_tag pt on t.id = pt.tag_id 
   		where pt.post_id = #{postId}
   	</select>
+  	
+  	<select id="selectTagVOsForHome" resultType="hashmap">
+  		select t.name,count(t.name) postCount 
+		from tb_tag t inner join tb_post_tag pt on t.id = pt.tag_id 
+		inner join tb_post p on pt.post_id = p.id 
+		group by t.name
+  	</select>
 </mapper>

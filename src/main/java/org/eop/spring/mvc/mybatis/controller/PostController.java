@@ -4,9 +4,13 @@ import java.util.List;
 
 import org.eop.spring.mvc.mybatis.bean.Blog;
 import org.eop.spring.mvc.mybatis.bean.Post;
+import org.eop.spring.mvc.mybatis.bean.PostTag;
+import org.eop.spring.mvc.mybatis.bean.Tag;
 import org.eop.spring.mvc.mybatis.bean.User;
 import org.eop.spring.mvc.mybatis.service.BlogService;
 import org.eop.spring.mvc.mybatis.service.PostService;
+import org.eop.spring.mvc.mybatis.service.PostTagService;
+import org.eop.spring.mvc.mybatis.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 /**
@@ -31,17 +36,32 @@ public class PostController {
 	@Autowired
 	private BlogService blogService;
 	
+	@Autowired
+	private TagService tagService;
+	
+	@Autowired
+	private PostTagService postTagService;
+	
 	@GetMapping("/add")
-	public String addPost(Model model) {
+	public String addPost(@SessionAttribute("user") User user, Model model) {
 		model.addAttribute("post", new Post());
+		Blog blog = blogService.getBlogByUser(user.getId());
+		List<Tag> tags = tagService.listTagsByBlog(blog.getId());
+		model.addAttribute("tags", tags);
 		return "post/add";
 	}
 	
 	@PostMapping("/add")
-	public String addPost(Post post, BindingResult bresult, @SessionAttribute("user") User user) {
+	public String addPost(Post post, BindingResult bresult, @RequestParam("tags") List<Long> tagIds, @SessionAttribute("user") User user) {
 		Blog blog = blogService.getBlogByUser(user.getId());
 		post.setBlogId(blog.getId());
 		postService.savePost(post);
+		for (Long tagId : tagIds) {
+			PostTag postTag = new PostTag();
+			postTag.setPostId(post.getId());
+			postTag.setTagId(tagId);
+			postTagService.savePostTag(postTag);
+		}
 		return "redirect:/post/list";
 	}
 	

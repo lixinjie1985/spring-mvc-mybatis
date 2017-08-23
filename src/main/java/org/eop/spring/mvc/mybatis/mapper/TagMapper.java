@@ -1,6 +1,7 @@
 package org.eop.spring.mvc.mybatis.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.eop.spring.mvc.mybatis.bean.Tag;
 
@@ -23,4 +24,6 @@ public interface TagMapper {
 	List<Tag> selectTagsByBlog(Long blogId);
 	
 	List<Tag> selectTagsByPost(Long postId);
+	
+	List<Map<String, Object>> selectTagVOsForHome();
 }

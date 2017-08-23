@@ -10,14 +10,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>add post</title>
+<title>person post</title>
 </head>
 <body>
-	<form:form method="post" action="${pageContext.request.contextPath}/post/add" modelAttribute="post">
-		title:<form:input path="title"/><br />
-		content:<form:input path="content"/><br />
-		tags:${tags}<br />
-		<input type="submit" value="add  post" />
-	</form:form>
+	User:${user.userName}<br />
+	Title:${post.title}<br />
+	Content:${post.content}<br />
+	PubTime:<fmt:formatDate value="${post.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/><br />
+	Tags:<br />
+	Comments:<br />
+	
 </body>
 </html>

@@ -57,12 +57,12 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public List<Map<String, Object>> listPostVOsForHome() {
-		return null;
+		return postMapper.selectPostVOsForHome();
 	}
 
 	@Override
 	public List<Map<String, Object>> listPostVOsByTagNameForHome(String tagName) {
-		return null;
+		return postMapper.selectPostVOsByTagNameForHome(tagName);
 	}
 
 }

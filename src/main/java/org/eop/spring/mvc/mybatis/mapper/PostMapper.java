@@ -26,4 +26,6 @@ public interface PostMapper {
 	List<Post> selectPostsByTag(Long tagId);
 	
 	List<Map<String, Object>> selectPostVOsForHome();
+	
+	List<Map<String, Object>> selectPostVOsByTagNameForHome(String tagName);
 }

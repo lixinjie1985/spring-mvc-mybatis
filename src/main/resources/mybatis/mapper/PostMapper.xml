@@ -36,13 +36,22 @@
   		where blog_id = #{blogId}
   	</select>
   	
-  	<select id="selectPostsByBlog" resultType="hashmap">
+  	<select id="selectPosts" resultType="Post">
+  		select id,title,content,pub_time publishTime,blog_id blogId from tb_post
+  	</select>
+  	
+  	<select id="selectPostVOsForHome" resultType="hashmap">
   		select p.id,p.title,p.pub_time publishTime,u.user_name userName,b.path blogPath 
   		from tb_post p inner join tb_blog b on p.blog_id = b.id 
   		inner join tb_user u on b.user_id = u.id
   	</select>
   	
-  	<select id="selectPosts" resultType="Post">
-  		select id,title,content,pub_time publishTime,blog_id blogId from tb_post
+  	<select id="selectPostVOsByTagNameForHome" parameterType="string" resultType="hashmap">
+  		select p.id,p.title,p.pub_time publishTime,u.user_name userName,b.path blogPath 
+  		from tb_tag t inner join tb_post_tag pt on t.id = pt.tag_id 
+  		inner join tb_post p on pt.post_id = p.id 
+  		inner join tb_blog b on p.blog_id = b.id 
+  		inner join tb_user u on b.user_id = u.id 
+  		where t.name = #{name}
   	</select>
 </mapper>

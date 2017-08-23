@@ -10,14 +10,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>add post</title>
+<title>home</title>
 </head>
 <body>
-	<form:form method="post" action="${pageContext.request.contextPath}/post/add" modelAttribute="post">
-		title:<form:input path="title"/><br />
-		content:<form:input path="content"/><br />
-		tags:${tags}<br />
-		<input type="submit" value="add  post" />
-	</form:form>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th><th>User</th><th>PuslishTime</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${postVOs}" var="postVO">
+			<tr>
+				<td><a href="${pageContext.request.contextPath}/${postVO.blogPath}/p/${postVO.id}">${postVO.title}</a></td>
+				<td><a href="${pageContext.request.contextPath}/${postVO.blogPath}/">${postVO.userName}</a></td>
+				<td><fmt:formatDate value="${postVO.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
 </body>
 </html>

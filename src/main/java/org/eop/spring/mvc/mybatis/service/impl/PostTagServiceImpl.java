@@ -16,22 +16,26 @@ public class PostTagServiceImpl implements PostTagService {
 	
 	@Override
 	public Long savePostTag(PostTag postTag) {
-		return null;
+		postTagMapper.insertPostTag(postTag);
+		return postTag.getId();
 	}
 
 	@Override
 	public Long deletePostTag(Long id) {
-		return null;
+		postTagMapper.deletePostTag(id);
+		return id;
 	}
 
 	@Override
 	public Long deletePostTagByPost(Long postId) {
-		return null;
+		postTagMapper.deletePostTagByPost(postId);
+		return postId;
 	}
 
 	@Override
 	public Long deletePostTagByTag(Long tagId) {
-		return null;
+		postTagMapper.deletePostTagByTag(tagId);
+		return tagId;
 	}
 
 }

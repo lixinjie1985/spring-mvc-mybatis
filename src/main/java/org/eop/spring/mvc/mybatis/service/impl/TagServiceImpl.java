@@ -57,7 +57,7 @@ public class TagServiceImpl implements TagService {
 
 	@Override
 	public List<Map<String, Object>> listTagVOsForHome() {
-		return null;
+		return tagMapper.selectTagVOsForHome();
 	}
 
 }
