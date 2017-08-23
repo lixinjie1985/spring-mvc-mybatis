@@ -5,12 +5,12 @@
 <mapper namespace="org.eop.spring.mvc.mybatis.mapper.PostMapper">
 
 	<insert id="insertPost" parameterType="Post" useGeneratedKeys="true" keyColumn="id" keyProperty="id" statementType="PREPARED">
-		insert into post (title,content,pub_time,blog_id)
-		values(#{title},#{content},#{publishTime},#{blogId})
+		insert into tb_post (title,content,blog_id)
+		values(#{title},#{content},#{blogId})
 	</insert>
   	
   	<update id="updatePost" parameterType="Post">
-  		update post
+  		update tb_post
   		<set>
   			<if test="title != null and title != ''">title = #{title},</if>
   			<if test="content != null and content != ''">content = #{content}</if>
@@ -19,18 +19,30 @@
   	</update>
   	
   	<delete id="deletePost" parameterType="long">
-  		delete from post where id = #{id}
+  		delete from tb_post where id = #{id}
   	</delete>
   	
   	<select id="selectPost" parameterType="long" resultType="Post">
-  		select id,title,content,pub_time publishTime,blog_id blogId from post where id = #{id}
+  		select id,title,content,pub_time publishTime,blog_id blogId from tb_post where id = #{id}
   	</select>
   	
   	<select id="selectPostsByBlog" parameterType="long" resultType="Post">
-  		select id,title,content,pub_time publishTime,blog_id blogId from post where blog_id = #{blogId}
+  		select id,title,content,pub_time publishTime,blog_id blogId from tb_post where blog_id = #{blogId}
+  	</select>
+  	
+  	<select id="selectPostsByTag" parameterType="long" resultType="Post">
+  		select id,title,content,pub_time publishTime,blog_id blogId 
+  		from tb_post p inner join tb_post_tag pt on p.id = pt.post_id 
+  		where blog_id = #{blogId}
+  	</select>
+  	
+  	<select id="selectPostsByBlog" resultType="hashmap">
+  		select p.id,p.title,p.pub_time publishTime,u.user_name userName,b.path blogPath 
+  		from tb_post p inner join tb_blog b on p.blog_id = b.id 
+  		inner join tb_user u on b.user_id = u.id
   	</select>
   	
   	<select id="selectPosts" resultType="Post">
-  		select id,title,content,pub_time publishTime,blog_id blogId from post
+  		select id,title,content,pub_time publishTime,blog_id blogId from tb_post
   	</select>
 </mapper>

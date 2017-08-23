@@ -5,12 +5,12 @@
 <mapper namespace="org.eop.spring.mvc.mybatis.mapper.UserMapper">
 
 	<insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyColumn="id" keyProperty="id" statementType="PREPARED">
-		insert into user (user_name,password,email,status)
+		insert into tb_user (user_name,password,email,status)
 		values(#{userName},#{password},#{email},#{status})
 	</insert>
   	
   	<update id="updateUser" parameterType="User">
-  		update user
+  		update tb_user
   		<set>
   			<if test="userName != null and userName != ''">user_name = #{userName},</if>
   			<if test="password != null and password != ''">password = #{password},</if>
@@ -21,26 +21,26 @@
   	</update>
   	
   	<update id="updateUserStatus" parameterType="map">
-  		update user set status = #{status} where id = #{id}
+  		update tb_user set status = #{status} where id = #{id}
   	</update>
   	
   	<delete id="deleteUser" parameterType="long">
-  		delete from user where id = #{id}
+  		delete from tb_user where id = #{id}
   	</delete>
   	
   	<select id="selectUser" parameterType="long" resultType="User">
-  		select id,user_name userName,password,email,status,reg_time registerTime from user where id = #{id}
+  		select id,user_name userName,password,email,status,reg_time registerTime from tb_user where id = #{id}
   	</select>
   	
   	<select id="selectUserByLogin" parameterType="map" resultType="User">
-  		select id,user_name userName,password,email,status,reg_time registerTime from user where user_name = #{userName} and password = #{password}
+  		select id,user_name userName,password,email,status,reg_time registerTime from tb_user where user_name = #{userName} and password = #{password}
   	</select>
   	
   	<select id="selectUsers" resultType="User">
-  		select id,user_name userName,password,email,status,reg_time registerTime from user
+  		select id,user_name userName,password,email,status,reg_time registerTime from tb_user
   	</select>
   	
   	<select id="selectUsersByStatus" parameterType="long" resultType="User">
-  		select id,user_name userName,password,email,status,reg_time registerTime from user where status = #{status}
+  		select id,user_name userName,password,email,status,reg_time registerTime from tb_user where status = #{status}
   	</select>
 </mapper>

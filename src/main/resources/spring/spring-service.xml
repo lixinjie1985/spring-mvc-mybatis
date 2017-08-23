@@ -4,5 +4,10 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="blogService" class="org.eop.spring.mvc.mybatis.service.impl.BlogServiceImpl"></bean>
+	<bean id="commentService" class="org.eop.spring.mvc.mybatis.service.impl.CommentServiceImpl"></bean>
+	<bean id="postService" class="org.eop.spring.mvc.mybatis.service.impl.PostServiceImpl"></bean>
+	<bean id="postTagService" class="org.eop.spring.mvc.mybatis.service.impl.PostTagServiceImpl"></bean>
+	<bean id="tagService" class="org.eop.spring.mvc.mybatis.service.impl.TagServiceImpl"></bean>
 	<bean id="userService" class="org.eop.spring.mvc.mybatis.service.impl.UserServiceImpl"></bean>
 </beans>

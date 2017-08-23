@@ -16,7 +16,7 @@
 	<table>
 		<thead>
 			<tr>
-				<th>ID</th><th>UserName</th><th>Password</th><th>Email</th><th>RegisterTime</th><th>Edit</th><th>Delete</th>
+				<th>ID</th><th>UserName</th><th>Password</th><th>RegisterTime</th><th>Edit</th><th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,7 +25,6 @@
 				<td>${user.id}</td>
 				<td>${user.userName}</td>
 				<td>${user.password}</td>
-				<td>${user.email}</td>
 				<td><fmt:formatDate value="${user.registerTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				<td><a href="${pageContext.request.contextPath}/user/edit/${user.id}">Edit</a></td>
 				<td><a href="${pageContext.request.contextPath}/user/delete/${user.id}">Delete</a></td>

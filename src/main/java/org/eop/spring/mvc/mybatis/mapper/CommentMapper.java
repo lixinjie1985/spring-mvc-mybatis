@@ -22,5 +22,5 @@ public interface CommentMapper {
 	
 	List<Comment> selectCommentsByPost(Long postId);
 	
-	List<Comment> selectCommentsByUser(Long userId);
+	List<Comment> selectCommentsByBlog(Long blogId);
 }

@@ -20,5 +20,7 @@ public interface BlogService {
 	
 	Blog getBlogByUser(Long userId);
 	
+	Blog getBlogByPath(String path);
+	
 	List<Blog> listAllBlogs();
 }

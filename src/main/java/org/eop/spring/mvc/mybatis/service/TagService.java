@@ -1,6 +1,7 @@
 package org.eop.spring.mvc.mybatis.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.eop.spring.mvc.mybatis.bean.Tag;
 
@@ -23,4 +24,7 @@ public interface TagService {
 	List<Tag> listTagsByBlog(Long blogId);
 	
 	List<Tag> listTagsByPost(Long postId);
+	
+	List<Map<String, Object>> listTagVOsForHome();
+	
 }

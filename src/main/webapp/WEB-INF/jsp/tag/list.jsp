@@ -10,25 +10,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>list user</title>
+<title>list tag</title>
 </head>
 <body>
 	<table>
 		<thead>
 			<tr>
-				<th>ID</th><th>UserName</th><th>Password</th><th>Email</th><th>RegisterTime</th><th>Edit</th><th>Delete</th>
+				<th>ID</th><th>Name</th><th>CreateTime</th><th>BlogId</th><th>Edit</th><th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${users}" var="user">
+			<c:forEach items="${tags}" var="tag">
 			<tr>
-				<td>${user.id}</td>
-				<td>${user.userName}</td>
-				<td>${user.password}</td>
-				<td>${user.email}</td>
-				<td><fmt:formatDate value="${user.registerTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				<td><a href="${pageContext.request.contextPath}/user/edit/${user.id}">Edit</a></td>
-				<td><a href="${pageContext.request.contextPath}/user/delete/${user.id}">Delete</a></td>
+				<td>${tag.id}</td>
+				<td>${tag.name}</td>
+				<td><fmt:formatDate value="${tag.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+				<td>${tag.blogId}</td>
+				<td><a href="${pageContext.request.contextPath}/tag/edit/${tag.id}">Edit</a></td>
+				<td><a href="${pageContext.request.contextPath}/tag/delete/${tag.id}">Delete</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>

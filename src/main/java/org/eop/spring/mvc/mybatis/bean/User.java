@@ -50,9 +50,4 @@ public class User {
 	public void setRegisterTime(Date registerTime) {
 		this.registerTime = registerTime;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", email=" + email + ", status="
-				+ status + ", registerTime=" + registerTime + "]";
-	}
 }

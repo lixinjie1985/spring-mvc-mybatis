@@ -2,6 +2,7 @@ package org.eop.spring.mvc.mybatis.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.eop.spring.mvc.mybatis.bean.User;
 
 /**
@@ -12,15 +13,15 @@ public interface UserMapper {
 
 	int insertUser(User user);
 	
-	User selectUser(Long id);
-	
-	User selectUserByLogin(String userName, String password);
-	
 	int updateUser(User user);
 	
-	int updateUserStatus(Long id, Integer status);
+	int updateUserStatus(@Param("id") Long id, @Param("status") Integer status);
 	
 	int deleteUser(Long id);
+	
+	User selectUser(Long id);
+	
+	User selectUserByLogin(@Param("userName") String userName, @Param("password") String password);
 	
 	List<User> selectUsers();
 	

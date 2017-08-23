@@ -10,25 +10,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>list user</title>
+<title>list post</title>
 </head>
 <body>
 	<table>
 		<thead>
 			<tr>
-				<th>ID</th><th>UserName</th><th>Password</th><th>Email</th><th>RegisterTime</th><th>Edit</th><th>Delete</th>
+				<th>ID</th><th>Title</th><th>Content</th><th>PublishTime</th><th>BlogId</th><th>Edit</th><th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${users}" var="user">
+			<c:forEach items="${posts}" var="post">
 			<tr>
-				<td>${user.id}</td>
-				<td>${user.userName}</td>
-				<td>${user.password}</td>
-				<td>${user.email}</td>
-				<td><fmt:formatDate value="${user.registerTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				<td><a href="${pageContext.request.contextPath}/user/edit/${user.id}">Edit</a></td>
-				<td><a href="${pageContext.request.contextPath}/user/delete/${user.id}">Delete</a></td>
+				<td>${post.id}</td>
+				<td>${post.title}</td>
+				<td>${post.content}</td>
+				<td><fmt:formatDate value="${post.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+				<td>${post.blogId}</td>
+				<td><a href="${pageContext.request.contextPath}/post/edit/${post.id}">Edit</a></td>
+				<td><a href="${pageContext.request.contextPath}/post/delete/${post.id}">Delete</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>

@@ -12,13 +12,15 @@ public interface BlogMapper {
 
 	int insertBlog(Blog blog);
 	
+	int updateBlog(Blog blog);
+	
+	int deleteBlog(Long id);
+	
 	Blog selectBlog(Long id);
 	
 	Blog selectBlogByUser(Long userId);
 	
-	int updateBlog(Blog blog);
-	
-	int deleteBlog(Long id);
+	Blog selectBlogByPath(String path);
 	
 	List<Blog> selectBlogs();
 }

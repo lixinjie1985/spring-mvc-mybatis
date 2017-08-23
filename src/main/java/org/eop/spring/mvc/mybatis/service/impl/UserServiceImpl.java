@@ -23,16 +23,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(Long id) {
-		return userMapper.selectUser(id);
-	}
-
-	@Override
-	public User getUserByLogin(String userName, String password) {
-		return userMapper.selectUserByLogin(userName, password);
-	}
-
-	@Override
 	public Long updateUser(User user) {
 		userMapper.updateUser(user);
 		return user.getId();
@@ -51,6 +41,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User getUser(Long id) {
+		return userMapper.selectUser(id);
+	}
+
+	@Override
+	public User getUserByLogin(String userName, String password) {
+		return userMapper.selectUserByLogin(userName, password);
+	}
+
+	@Override
 	public List<User> listAllUsers() {
 		return userMapper.selectUsers();
 	}
@@ -59,5 +59,5 @@ public class UserServiceImpl implements UserService {
 	public List<User> listUsersByStatus(Integer status) {
 		return userMapper.selectUsersByStatus(status);
 	}
-
+	
 }

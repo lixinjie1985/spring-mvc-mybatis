@@ -22,5 +22,5 @@ public interface CommentService {
 	
 	List<Comment> listCommentsByPost(Long postId);
 	
-	List<Comment> listCommentsByUser(Long userId);
+	List<Comment> listCommentsByBlog(Long blogId);
 }
