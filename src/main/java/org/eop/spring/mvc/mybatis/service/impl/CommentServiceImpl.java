@@ -18,37 +18,40 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Override
 	public Long saveComment(Comment comment) {
-		return null;
+		commentMapper.insertComment(comment);
+		return comment.getId();
 	}
 
 	@Override
 	public Long updateComment(Comment comment) {
-		return null;
+		commentMapper.updateComment(comment);
+		return comment.getId();
 	}
 
 	@Override
 	public Long removeComment(Long id) {
-		return null;
+		commentMapper.deleteComment(id);
+		return id;
 	}
 
 	@Override
 	public Comment getComment(Long id) {
-		return null;
+		return commentMapper.selectComment(id);
 	}
 
 	@Override
 	public List<Comment> listAllComments() {
-		return null;
+		return commentMapper.selectComments();
 	}
 
 	@Override
 	public List<Comment> listCommentsByPost(Long postId) {
-		return null;
+		return commentMapper.selectCommentsByPost(postId);
 	}
 
 	@Override
 	public List<Comment> listCommentsByBlog(Long blogId) {
-		return null;
+		return commentMapper.selectCommentsByBlog(blogId);
 	}
 
 }
