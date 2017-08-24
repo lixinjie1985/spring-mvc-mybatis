@@ -66,6 +66,8 @@ public class HomePersonController {
 		model.addAttribute("user", user);
 		Post post = postService.getPost(id);
 		model.addAttribute("post", post);
+		List<Tag> tags = tagService.listTagsByPost(post.getId());
+		model.addAttribute("tags", tags);
 		List<Comment> comments = commentService.listCommentsByPost(post.getId());
 		model.addAttribute("comments", comments);
 		return "person/post";

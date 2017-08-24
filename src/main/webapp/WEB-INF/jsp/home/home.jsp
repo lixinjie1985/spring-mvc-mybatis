@@ -13,7 +13,10 @@
 <title>home</title>
 </head>
 <body>
-	<table>
+	<div style="text-align:center;">这是一个博客网站</div>
+	<div style="text-align:center;">(<a href="${pageContext.request.contextPath}/user/add">后台入口</a>)</div>
+	<br /><br />
+	<table style="margin-left:auto;margin-right:auto;">
 		<thead>
 			<tr>
 				<th>Title</th><th>User</th><th>PuslishTime</th>
@@ -29,6 +32,11 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
+	<br /><br />
+	<div style="text-align:center;">
+	<c:forEach items="${tagVOs}" var="tagVO">
+		<a href="${pageContext.request.contextPath}/t/${tagVO.name}">${tagVO.name}(${tagVO.postCount})</a> &nbsp;&nbsp;
+	</c:forEach>
+	</div>
 </body>
 </html>

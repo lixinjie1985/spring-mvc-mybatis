@@ -13,6 +13,9 @@
 <title>list post</title>
 </head>
 <body>
+	<h2>博文列表</h2>
+	<a href="${pageContext.request.contextPath}/post/add">添加博文</a>&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/">网站首页</a>
 	<table>
 		<thead>
 			<tr>

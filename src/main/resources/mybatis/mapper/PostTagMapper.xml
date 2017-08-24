@@ -5,8 +5,16 @@
 <mapper namespace="org.eop.spring.mvc.mybatis.mapper.PostTagMapper">
 
 	<insert id="insertPostTag" parameterType="PostTag" useGeneratedKeys="true" keyColumn="id" keyProperty="id" statementType="PREPARED">
-		insert into tb_post_tag (post_id,tag_id,crt_time)
-		values(#{postId},#{tagId},#{createTime})
+		insert into tb_post_tag (post_id,tag_id)
+		values(#{postId},#{tagId})
+	</insert>
+	
+	<insert id="insertPostTags" parameterType="list" useGeneratedKeys="true" keyColumn="id" keyProperty="id" statementType="PREPARED">
+		insert into tb_post_tag (post_id,tag_id)
+		values
+		<foreach collection="list" item="tag" separator=",">
+			(#{tag.postId},#{tag.tagId})
+		</foreach>
 	</insert>
   	
   	<delete id="deletePostTag" parameterType="long">

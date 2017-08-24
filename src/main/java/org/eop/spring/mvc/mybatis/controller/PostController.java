@@ -1,5 +1,6 @@
 package org.eop.spring.mvc.mybatis.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eop.spring.mvc.mybatis.bean.Blog;
@@ -52,16 +53,18 @@ public class PostController {
 	}
 	
 	@PostMapping("/add")
-	public String addPost(Post post, BindingResult bresult, @RequestParam("tags") List<Long> tagIds, @SessionAttribute("user") User user) {
+	public String addPost(Post post, BindingResult bresult, @RequestParam("tagIds") List<Long> tagIds, @SessionAttribute("user") User user) {
 		Blog blog = blogService.getBlogByUser(user.getId());
 		post.setBlogId(blog.getId());
 		postService.savePost(post);
+		List<PostTag> postTags = new ArrayList<>();
 		for (Long tagId : tagIds) {
 			PostTag postTag = new PostTag();
 			postTag.setPostId(post.getId());
 			postTag.setTagId(tagId);
-			postTagService.savePostTag(postTag);
+			postTags.add(postTag);
 		}
+		postTagService.savePostTags(postTags);
 		return "redirect:/post/list";
 	}
 	

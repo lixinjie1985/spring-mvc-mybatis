@@ -30,6 +30,6 @@ public class LoginController {
 	public String login(WebRequest request, @RequestParam("userName") String userName, @RequestParam("password") String password) {
 		User user = userService.getUserByLogin(userName, password);
 		request.setAttribute("user", user, WebRequest.SCOPE_SESSION);
-		return "login/index";
+		return "redirect:/blog/add";
 	}
 }

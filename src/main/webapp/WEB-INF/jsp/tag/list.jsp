@@ -13,6 +13,9 @@
 <title>list tag</title>
 </head>
 <body>
+	<h2>标签列表</h2>
+	<a href="${pageContext.request.contextPath}/tag/add">添加标签</a>&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/post/add">添加博文</a>
 	<table>
 		<thead>
 			<tr>

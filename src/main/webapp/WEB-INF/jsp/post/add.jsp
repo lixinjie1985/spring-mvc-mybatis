@@ -13,10 +13,15 @@
 <title>add post</title>
 </head>
 <body>
+	<h2>添加博文</h2>
+	<font style="color:red;font-size:14px;">程序没做校验，请至少选择一个标签</font>
 	<form:form method="post" action="${pageContext.request.contextPath}/post/add" modelAttribute="post">
 		title:<form:input path="title"/><br />
 		content:<form:input path="content"/><br />
-		tags:${tags}<br />
+		tags:<c:forEach items="${tags}" var="tag" varStatus="status">
+				<input type="checkbox" name="tagIds" value="${tag.id}" id="tagIds${status.index}"><label for="tagIds${status.index}">${tag.name}</label>
+			</c:forEach>
+		<br />
 		<input type="submit" value="add  post" />
 	</form:form>
 </body>

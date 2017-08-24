@@ -13,6 +13,8 @@
 <title>add tag</title>
 </head>
 <body>
+	<h2>添加标签</h2>
+	<font style="color:red;font-size:14px;">在发表博文时，可以选择这些标签</font>
 	<form:form method="post" action="${pageContext.request.contextPath}/tag/add" modelAttribute="tag">
 		name:<form:input path="name"/><br />
 		<input type="submit" value="add  tag" />

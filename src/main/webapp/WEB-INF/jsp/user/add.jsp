@@ -13,6 +13,8 @@
 <title>add user</title>
 </head>
 <body>
+	<h2>添加用户</h2>
+	<font style="color:red;font-size:16px;">程序没做限制，不要添加重名的用户</font>
 	<form:form method="post" action="${pageContext.request.contextPath}/user/add" modelAttribute="user">
 		userName:<form:input path="userName"/><br />
 		password:<form:input path="password"/><br />

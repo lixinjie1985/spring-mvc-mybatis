@@ -13,6 +13,8 @@
 <title>list blog</title>
 </head>
 <body>
+	<h2>本网站已开通的博客</h2>
+	<a href="${pageContext.request.contextPath}/tag/add">添加标签</a>
 	<table>
 		<thead>
 			<tr>

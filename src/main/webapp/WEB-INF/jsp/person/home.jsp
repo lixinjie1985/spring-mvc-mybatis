@@ -32,6 +32,9 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
+	<br /><br />
+	<c:forEach items="${tags}" var="tag">
+		<a href="${pageContext.request.contextPath}/${blog.path}/t/${tag.id}">${tag.name}</a>
+	</c:forEach>
 </body>
 </html>

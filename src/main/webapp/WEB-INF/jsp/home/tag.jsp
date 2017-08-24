@@ -10,24 +10,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>list user</title>
+<title>home tag</title>
 </head>
 <body>
+	TagName:${name}<br /><br />
 	<table>
 		<thead>
 			<tr>
-				<th>ID</th><th>UserName</th><th>Password</th><th>RegisterTime</th><th>Edit</th><th>Delete</th>
+				<th>Title</th><th>User</th><th>PuslishTime</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${users}" var="user">
+			<c:forEach items="${postVOs}" var="postVO">
 			<tr>
-				<td>${user.id}</td>
-				<td>${user.userName}</td>
-				<td>${user.password}</td>
-				<td><fmt:formatDate value="${user.registerTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				<td><a href="${pageContext.request.contextPath}/user/edit/${user.id}">Edit</a></td>
-				<td><a href="${pageContext.request.contextPath}/user/delete/${user.id}">Delete</a></td>
+				<td><a href="${pageContext.request.contextPath}/${postVO.blogPath}/p/${postVO.id}">${postVO.title}</a></td>
+				<td><a href="${pageContext.request.contextPath}/${postVO.blogPath}/">${postVO.userName}</a></td>
+				<td><fmt:formatDate value="${postVO.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 			</tr>
 			</c:forEach>
 		</tbody>

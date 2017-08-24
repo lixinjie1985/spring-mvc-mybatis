@@ -1,5 +1,7 @@
 package org.eop.spring.mvc.mybatis.mapper;
 
+import java.util.List;
+
 import org.eop.spring.mvc.mybatis.bean.PostTag;
 
 /**
@@ -9,6 +11,8 @@ import org.eop.spring.mvc.mybatis.bean.PostTag;
 public interface PostTagMapper {
 
 	int insertPostTag(PostTag postTag);
+	
+	int insertPostTags(List<PostTag> postTags);
 	
 	int deletePostTag(Long id);
 	

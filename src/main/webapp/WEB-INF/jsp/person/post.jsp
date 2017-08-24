@@ -17,7 +17,11 @@
 	Title:${post.title}<br />
 	Content:${post.content}<br />
 	PubTime:<fmt:formatDate value="${post.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/><br />
-	Tags:<br />
+	Tags:
+	<c:forEach items="${tags}" var="tag">
+		<a href="${pageContext.request.contextPath}/${blog.path}/t/${tag.id}">${tag.name}</a>&nbsp;
+	</c:forEach>
+	<br />
 	Comments:<br />
 	
 </body>

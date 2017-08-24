@@ -13,6 +13,9 @@
 <title>add blog</title>
 </head>
 <body>
+	<h4>你已成功登陆，请为自己开通一个博客</h4>
+	<h2>添加博客</h2>
+	<font style="color:red;font-size:16px;">程序没做限制，请只添加一个博客，且path不要有重复</font>
 	<form:form method="post" action="${pageContext.request.contextPath}/blog/add" modelAttribute="blog">
 		name:<form:input path="name"/><br />
 		path:<form:input path="path"/><br />

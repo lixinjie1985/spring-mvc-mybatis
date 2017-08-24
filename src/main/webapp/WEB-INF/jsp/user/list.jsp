@@ -13,6 +13,9 @@
 <title>list user</title>
 </head>
 <body>
+	<h2>用户列表</h2>
+	<a href="${pageContext.request.contextPath}/user/add">添加用户</a>&nbsp;&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/login">用户登录</a>
 	<table>
 		<thead>
 			<tr>

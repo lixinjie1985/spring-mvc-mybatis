@@ -1,5 +1,8 @@
 package org.eop.spring.mvc.mybatis.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eop.spring.mvc.mybatis.bean.PostTag;
 import org.eop.spring.mvc.mybatis.mapper.PostTagMapper;
 import org.eop.spring.mvc.mybatis.service.PostTagService;
@@ -19,7 +22,17 @@ public class PostTagServiceImpl implements PostTagService {
 		postTagMapper.insertPostTag(postTag);
 		return postTag.getId();
 	}
-
+	
+	@Override
+	public List<Long> savePostTags(List<PostTag> postTags) {
+		postTagMapper.insertPostTags(postTags);
+		List<Long> ids = new ArrayList<>(postTags.size());
+		for (PostTag pt : postTags) {
+			ids.add(pt.getId());
+		}
+		return ids;
+	}
+	
 	@Override
 	public Long deletePostTag(Long id) {
 		postTagMapper.deletePostTag(id);

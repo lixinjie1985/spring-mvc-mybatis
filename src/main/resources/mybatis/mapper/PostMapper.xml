@@ -31,9 +31,9 @@
   	</select>
   	
   	<select id="selectPostsByTag" parameterType="long" resultType="Post">
-  		select id,title,content,pub_time publishTime,blog_id blogId 
+  		select p.id,p.title,p.content,p.pub_time publishTime,p.blog_id blogId 
   		from tb_post p inner join tb_post_tag pt on p.id = pt.post_id 
-  		where blog_id = #{blogId}
+  		where pt.tag_id = #{tagId}
   	</select>
   	
   	<select id="selectPosts" resultType="Post">

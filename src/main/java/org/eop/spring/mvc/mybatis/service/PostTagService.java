@@ -1,5 +1,7 @@
 package org.eop.spring.mvc.mybatis.service;
 
+import java.util.List;
+
 import org.eop.spring.mvc.mybatis.bean.PostTag;
 
 /**
@@ -9,6 +11,8 @@ import org.eop.spring.mvc.mybatis.bean.PostTag;
 public interface PostTagService {
 
 	Long savePostTag(PostTag postTag);
+	
+	List<Long> savePostTags(List<PostTag> postTags);
 	
 	Long deletePostTag(Long id);
 	
