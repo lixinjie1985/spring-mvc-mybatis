@@ -3,7 +3,9 @@ package org.eop.spring.mvc.mybatis.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import org.eop.spring.mvc.mybatis.bean.User;
+import org.eop.spring.mvc.mybatis.mapper.param.PageParam;
 
 /**
  * @author lixinjie
@@ -25,5 +27,15 @@ public interface UserMapper {
 	
 	List<User> selectUsers();
 	
+	List<User> selectUsers(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+	
+	List<User> selectUsers(PageParam pageParam);
+	
 	List<User> selectUsersByStatus(Integer status);
+	
+	List<User> selectUsersByStatus(@Param("status") Integer status, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
+	
+	List<User> selectUsersByStatus(@Param("status") Integer status, @Param("pageParam") PageParam pageParam);
+	
+	List<User> selectUsersByStatus(@Param("status") Integer status, @Param("rowBounds") RowBounds rowBounds);
 }

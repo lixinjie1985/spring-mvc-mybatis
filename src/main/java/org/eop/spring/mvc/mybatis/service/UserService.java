@@ -2,7 +2,9 @@ package org.eop.spring.mvc.mybatis.service;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.eop.spring.mvc.mybatis.bean.User;
+import org.eop.spring.mvc.mybatis.mapper.param.PageParam;
 
 /**
  * @author lixinjie
@@ -24,5 +26,15 @@ public interface UserService {
 	
 	List<User> listAllUsers();
 	
+	List<User> listAllUsers(int pageNum, int pageSize);
+	
+	List<User> listAllUsers(PageParam pageParam);
+	
 	List<User> listUsersByStatus(Integer status);
+	
+	List<User> listUsersByStatus(Integer status, int pageNum, int pageSize);
+	
+	List<User> listUsersByStatus(Integer status, PageParam pageParam);
+	
+	List<User> listUsersByStatus(Integer status, RowBounds rowBounds);
 }

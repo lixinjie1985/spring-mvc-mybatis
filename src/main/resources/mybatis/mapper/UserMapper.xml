@@ -40,7 +40,7 @@
   		select id,user_name userName,password,email,status,reg_time registerTime from tb_user
   	</select>
   	
-  	<select id="selectUsersByStatus" parameterType="long" resultType="User">
+  	<select id="selectUsersByStatus" parameterType="int" resultType="User">
   		select id,user_name userName,password,email,status,reg_time registerTime from tb_user where status = #{status}
   	</select>
 </mapper>
