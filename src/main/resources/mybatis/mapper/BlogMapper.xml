@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.eop.spring.mvc.mybatis.mapper.BlogMapper">
+
+	<insert id="insertBlog" parameterType="Blog" useGeneratedKeys="true" keyColumn="id" keyProperty="id" statementType="PREPARED">
+		insert into tb_blog (name,path,user_id)
+		values(#{name},#{path},#{userId})
+	</insert>
+  	
+  	<update id="updateBlog" parameterType="Blog">
+  		update tb_blog
+  		<set>
+  			<if test="name != null and name != ''">name = #{name},</if>
+  			<if test="path != null and path != ''">path = #{path},</if>
+  		</set>
+  		where id = #{id}
+  	</update>
+  	
+  	<delete id="deleteBlog" parameterType="long">
+  		delete from tb_blog where id = #{id}
+  	</delete>
+  	
+  	<select id="selectBlog" parameterType="long" resultType="Blog">
+  		select id,name,path,open_time openTime,user_id userId from tb_blog where id = #{id}
+  	</select>
+  	
+  	<select id="selectBlogByUser" parameterType="long" resultType="Blog">
+  		select id,name,path,open_time openTime,user_id userId from tb_blog where user_id = #{userId}
+  	</select>
+  	
+  	<select id="selectBlogByPath" parameterType="String" resultType="Blog">
+  		select id,name,path,open_time openTime,user_id userId from tb_blog where path = #{path}
+  	</select>
+  	
+  	<select id="selectBlogs" resultType="Blog">
+  		select id,name,path,open_time openTime,user_id userId from tb_blog
+  	</select>
+</mapper>

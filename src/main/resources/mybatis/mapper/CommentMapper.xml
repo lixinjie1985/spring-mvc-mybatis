@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.eop.spring.mvc.mybatis.mapper.CommentMapper">
+
+	<insert id="insertComment" parameterType="Comment" useGeneratedKeys="true" keyColumn="id" keyProperty="id" statementType="PREPARED">
+		insert into tb_comment (content,cmt_time,post_id,blog_id)
+		values(#{content},#{commentTime},#{postId},#{blogId})
+	</insert>
+  	
+  	<update id="updateComment" parameterType="Comment">
+  		update tb_comment
+  		<set>
+  			<if test="content != null and content != ''">content = #{content}</if>
+  		</set>
+  		where id = #{id}
+  	</update>
+  	
+  	<delete id="deleteComment" parameterType="long">
+  		delete from tb_comment where id = #{id}
+  	</delete>
+  	
+  	<select id="selectComment" parameterType="long" resultType="Comment">
+  		select id,content,cmt_time commentTime,post_id postId,blog_id blogId from tb_comment where id = #{id}
+  	</select>
+  	
+  	<select id="selectCommentsByPost" parameterType="long" resultType="Comment">
+  		select id,content,cmt_time commentTime,post_id postId,blog_id blogId from tb_comment where post_id = #{postId}
+  	</select>
+  	
+  	<select id="selectCommentsByBlog" parameterType="long" resultType="Comment">
+  		select id,content,cmt_time commentTime,post_id postId,blog_id blogId from tb_comment where blog_id = #{blogId}
+  	</select>
+  	
+  	<select id="selectComments" resultType="Comment">
+  		select id,content,cmt_time commentTime,post_id postId,blog_id blogId from tb_comment
+  	</select>
+</mapper>

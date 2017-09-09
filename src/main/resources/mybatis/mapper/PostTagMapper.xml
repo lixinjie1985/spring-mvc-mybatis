@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.eop.spring.mvc.mybatis.mapper.PostTagMapper">
+
+	<insert id="insertPostTag" parameterType="PostTag" useGeneratedKeys="true" keyColumn="id" keyProperty="id" statementType="PREPARED">
+		insert into tb_post_tag (post_id,tag_id)
+		values(#{postId},#{tagId})
+	</insert>
+	
+	<insert id="insertPostTags" parameterType="list" useGeneratedKeys="true" keyColumn="id" keyProperty="id" statementType="PREPARED">
+		insert into tb_post_tag (post_id,tag_id)
+		values
+		<foreach collection="list" item="tag" separator=",">
+			(#{tag.postId},#{tag.tagId})
+		</foreach>
+	</insert>
+  	
+  	<delete id="deletePostTag" parameterType="long">
+  		delete from tb_post_tag where id = #{id}
+  	</delete>
+  	
+  	<delete id="deletePostTagByPost" parameterType="long">
+  		delete from tb_post_tag where post_id = #{postId}
+  	</delete>
+  	
+  	<delete id="deletePostTagByTag" parameterType="long">
+  		delete from tb_post_tag where tag_id = #{tagId}
+  	</delete>
+</mapper>
