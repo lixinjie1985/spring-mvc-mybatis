@@ -2,6 +2,7 @@ package org.eop.spring.mvc.mybatis.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.eop.spring.mvc.mybatis.bean.User;
 import org.eop.spring.mvc.mybatis.mapper.param.PageParam;
 import org.eop.spring.mvc.mybatis.service.UserService;
@@ -79,8 +80,10 @@ public class UserController {
 	public String pageUser(@PathVariable("status") Integer status, @PathVariable("pageNum") Integer pageNum, @PathVariable("pageSize") Integer pageSize, Model model) {
 		List<User> list1 = userService.listUsersByStatus(status, pageNum, pageSize);
 		List<User> list2 = userService.listUsersByStatus(status, new PageParam(pageNum, pageSize));
+		List<User> list3 = userService.listUsersByStatus(status, new RowBounds(pageNum, pageSize));
 		model.addAttribute("users1", new PageInfo<User>(list1));
 		model.addAttribute("users2", new PageInfo<User>(list2));
+		model.addAttribute("users3", new PageInfo<User>(list3));
 		return "user/page";
 	}
 }

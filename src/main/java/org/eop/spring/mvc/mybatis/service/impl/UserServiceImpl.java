@@ -2,6 +2,7 @@ package org.eop.spring.mvc.mybatis.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.eop.spring.mvc.mybatis.bean.User;
 import org.eop.spring.mvc.mybatis.mapper.UserMapper;
 import org.eop.spring.mvc.mybatis.mapper.param.PageParam;
@@ -79,5 +80,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> listUsersByStatus(Integer status, PageParam pageParam) {
 		return userMapper.selectUsersByStatus(status, pageParam);
+	}
+	
+	@Override
+	public List<User> listUsersByStatus(Integer status, RowBounds rowBounds) {
+		return userMapper.selectUsersByStatus(status, rowBounds);
 	}
 }
